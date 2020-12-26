@@ -1,6 +1,6 @@
 // const config = require("config");
 //const jwt = require("jsonwebtoken");
-const Joi = require("joi");
+const Joi = require("@hapi/joi");
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
@@ -33,13 +33,13 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
-	const schema = {
+	const schema =Joi.object( {
 		name: Joi.string().min(5).max(50).required(),
 		email: Joi.string().min(5).max(255).required().email(),
 		password: Joi.string().min(5).max(255).required(),
-	};
+	});
 
-	return Joi.validate(user, schema);
+	return schema.validate(user, { abortEarly: false });
 }
 
 exports.User = User;
