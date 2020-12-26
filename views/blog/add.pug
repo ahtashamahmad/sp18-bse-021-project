@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    h1 Add New Book For Reading
+    form(action="/blog/add",method="post")
+        .form-group
+            label(for="topic") Topic
+            input#topic(type="text", class="form-control", name="topic")
+        .form-group
+            label(for="post") Blog Post
+            input#post(type="text", class="form-control", name="post")
+        
+        input(type="submit", class="btn btn-info" )
+    

@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    .row
+        .col-sm-8
+            h1=title
+        .col-sm-4
+            a(href="/blog/add", class="btn btn-info my-10 float-right") Add New Blog Post
+    table.table
+        thead
+            tr
+                th(style="text-align:center") Topic
+                th(style="text-align:center") Post
+        tbody
+            each blog in blogs
+                tr
+                    td(style="text-align:center")=blog.topic
+                    td(style="text-align:center")=blog.post
+                    td(style="text-align:center")
+                        a(href="#", class="btn faas btn-danger") Read
